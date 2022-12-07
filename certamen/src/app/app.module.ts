@@ -11,6 +11,8 @@ import { PublicoComponent } from './publico/publico.component';
 import { BandasComponent } from './bandas/bandas.component';
 import { JuecesComponent } from './jueces/jueces.component';
 import { CreditsComponent } from './credits/credits.component';
+import { CardJuezComponent } from './card-juez/card-juez.component';
+import { CardBandaComponent } from './card-banda/card-banda.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CreditsComponent } from './credits/credits.component';
     PublicoComponent,
     BandasComponent,
     JuecesComponent,
-    CreditsComponent
+    CreditsComponent,
+    CardJuezComponent,
+    CardBandaComponent
   ],
   imports: [
     BrowserModule,
