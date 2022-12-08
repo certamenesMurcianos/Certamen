@@ -10,9 +10,8 @@ export class DataService {
   private urlBase:string = "https://my-json-server.typicode.com/certamenesMurcianos/Certamen/db"
   
   
-  private name:string = ""
-  private categoria:string = "0"
-  private fabricante:string = "0"
+  private nombre_juez:string = ""
+  private nombre_banda:string = ""
 
   constructor(private http:HttpClient) {
     this.http.get(this.urlBase + "articulos").subscribe(
