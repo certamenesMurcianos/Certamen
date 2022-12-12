@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BandasDeMusica{% endblock %}
+
+{% block body %}
+    <h1 style="text-align:center">Bandas De Musica</h1>
+
+    <div class="mb-3" style="width: 300px; margin: auto;">
+        <div class="container">
+            <table class="table table-bordered border-primary">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ bandas_de_musica.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{ bandas_de_musica.nombre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Número de Músicos</th>
+                        <td>{{ bandas_de_musica.numeroDeMusicos }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre Director</th>
+                        <td>{{ bandas_de_musica.nombreDirector }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pueblo</th>
+                        <td>{{ bandas_de_musica.pueblo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Provincia</th>
+                        <td>{{ bandas_de_musica.provincia }}</td>
+                    </tr>
+                    <tr>
+                        <th>Código Postal</th>
+                        <td>{{ bandas_de_musica.codigoPostal }}</td>
+                    </tr>
+                    <tr>
+                        <th>Teléfono</th>
+                        <td>{{ bandas_de_musica.telefono }}</td>
+                    </tr>
+                    <tr>
+                        <th>Correo_electronico</th>
+                        <td>{{ bandas_de_musica.correoElectronico }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <a class="btn btn-info" href="{{ path('app_bandas_de_musica_index') }}">Volver a Listado</a>
+            <a class="btn btn-warning" href="{{ path('app_bandas_de_musica_edit', {'id': bandas_de_musica.id}) }}">Editar</a>
+    </div>
+    {{ include('bandas_de_musica/_delete_form.html.twig') }}
+{% endblock %}

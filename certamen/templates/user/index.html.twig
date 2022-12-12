@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1 style="text-align:center">Índice de usuarios</h1>
+
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Nombre</th>
+                <th>Número de Músicos</th>
+                <th>Nombre del Director</th>
+                <th>Pueblo</th>
+                <th>Provincia</th>
+                <th>Código Postal</th>
+                <th>Teléfono</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.nombre }}</td>
+                <td>{{ user.numeroDeMusicos }}</td>
+                <td>{{ user.nombreDirector }}</td>
+                <td>{{ user.pueblo }}</td>
+                <td>{{ user.provincia }}</td>
+                <td>{{ user.codigoPostal }}</td>
+                <td>{{ user.telefono }}</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_user_show', {'id': user.id}) }}">Mostrar</a>
+                    <a class="btn btn-warning" href="{{ path('app_user_edit', {'id': user.id}) }}">Editar</a>
+                    <a class="btn btn-danger" href="{{ path('app_user_delete', {'id': user.id}) }}">Borrar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">No se han encontrado resultados</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_user_new') }}">Crear usuario nuevo</a>
+{% endblock %}
