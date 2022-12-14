@@ -4,7 +4,7 @@
     rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
     crossorigin="anonymous" />
-    <style>
+  <style>
     @import
     url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
     body {background-color:lightblue; font-family: 'Roboto Slab', serif;
@@ -22,7 +22,7 @@
   <div class="col-auto">
     <ul class="list-group">
       <li class="list-group-item">
-        <a href="{{ path('public_test') }}">Publica</a>
+        <a href="{{ path('public_test') }}">Pública</a>
       </li>
       {# Usuario autentificado permitimos acceso zona privada y logout #}
       {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -30,15 +30,15 @@
           <a href="{{ path('private_test') }}">Privada</a>
         </li>
         <li class="list-group-item">
-          <a href="{{ path('app_logout') }}">Logout</a>
+          <a href="{{ path('app_logout') }}">Cerrar sesión</a>
         </li>
       {% else %}
         {# Usuario no autentificado permitimos registro y login #}
         <li class="list-group-item">
-          <a href="{{ path('app_register') }}">Registro</a>
+          <a href="{{ path('app_register') }}">Registrarse</a>
         </li>
         <li class="list-group-item">
-          <a href="{{ path('app_login') }}">Login</a>
+          <a href="{{ path('app_login') }}">Iniciar sesión</a>
         </li>
       {% endif %}
     </ul>
