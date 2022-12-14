@@ -21,9 +21,9 @@ class TestController extends AbstractController
      */
     public function privada(): Response
     {
-        // $banda_id = getBanda();
-        $banda=$bandaRepository->findOneBy(['id'=>$id]);
-        $banda_id=$banda->getId();
+        $banda_id = getBanda();
+        // $banda=$bandaRepository->findOneBy(['id'=>$id]);
+        // $banda_id=$banda->getId();
         return $this->redirectToRoute('app_bandas_de_musica_show',[
             'id' => $banda_id
         ]);
