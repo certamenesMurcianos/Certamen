@@ -4,6 +4,9 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Form\UserType;
+use App\Entity\BandasDeMusica;
+use App\Repository\BandasDeMusicaRepository;
+use App\Form\BandasDeMusicaType;
 use App\Entity\Prueba;
 use App\Form\PruebaType;
 use App\Repository\PruebaRepository;
@@ -21,11 +24,19 @@ class TestController extends AbstractController
      */
     public function privada(): Response
     {
-        $banda_id = getBanda();
-        // $banda=$bandaRepository->findOneBy(['id'=>$id]);
-        // $banda_id=$banda->getId();
-        return $this->redirectToRoute('app_bandas_de_musica_show',[
-            'id' => $banda_id
+
+        $userRepository = $this->getDoctrine()->getManager();
+
+        $relacion = "cartagena@gmail.com";
+        $user = $userRepository->getRepository(User::class)->findOneBy(['email' => $relacion]);
+        $user_id = $user->getBanda();
+
+        $bandaRepository = $this->getDoctrine()->getManager();
+        $id = $user_id;
+        $banda = $bandaRepository->getRepository(BandasDeMusica::class)->findOneBy(['id' => $id]);
+        $banda_id = $banda->getId();
+        return $this->redirectToRoute('app_bandas_de_musica_show', [
+            'id' => $banda_id,
         ]);
     }
     
