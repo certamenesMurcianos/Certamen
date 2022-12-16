@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2022 a las 11:10:37
+-- Tiempo de generación: 16-12-2022 a las 11:38:32
 -- Versión del servidor: 10.4.19-MariaDB-log
 -- Versión de PHP: 7.3.28
 
@@ -45,8 +45,8 @@ CREATE TABLE `bandas_de_musica` (
 --
 
 INSERT INTO `bandas_de_musica` (`id`, `nombre`, `numero_de_musicos`, `nombre_director`, `pueblo`, `provincia`, `codigo_postal`, `telefono`, `certamenes_id`, `correo_electronico`) VALUES
-(1, 'Música en los Garres', 103, 'Antonio Guirao Fernández', 'Los Garres', 'Murcia', '33003', '222333444', NULL, ''),
-(2, 'Mediza Sillasa', 106, 'Josefa Ayala Albaladejo', 'Cieza', 'Murcia', '33022', '777888999', NULL, ''),
+(1, 'Música en los Garres', 103, 'Antonio Guirao Fernández', 'Los Garres', 'Murcia', '33003', '222333444', NULL, 'losgarres@gmail.com\r\n'),
+(2, 'Mediza Sillasa', 106, 'Josefa Ayala Albaladejo', 'Cieza', 'Murcia', '33022', '777888999', NULL, 'cieza@gmail.com'),
 (3, 'Músicos Cartagineses', 89, 'Antonio Guirao Fernández', 'Cartagena', 'Murcia', '11220', '555666777', NULL, 'cartagena@gmail.com'),
 (4, 'Agrupación Musical Juvenil', 109, 'Andrés Pérez Bernabé', 'Cabezo de Torres', 'Murcia', '30110', '999888666', NULL, 'cabezo@gmail.com'),
 (5, 'Amigos de la Música', 90, 'Luisa Otero López', 'Beniaján', 'Murcia', '22011', '222888444', NULL, 'beniajan@gmail.com');
@@ -103,7 +103,8 @@ INSERT INTO `user` (`id`, `email`, `roles`, `password`, `banda_id`) VALUES
 (3, 'beniajan@gmail.com', '[]', '$2y$13$tX66FP7ey5it9zuufZp85.KTGrmuis5E0VP6InStMMtn8D9neCLiq', 5),
 (4, 'losgarres@gmail.com', '[]', '$2y$13$v2zLUKEe6Bqow7BcHAc5JuLdc1Rw2NvqFnjDdikMcrpeY/j/MzOvO', 1),
 (5, 'cieza@gmail.com', '[]', '$2y$13$cvDtpDeecjab5A85EhWC..UqbKbrYTvFov2O7I3POR45yTQ1glqnO', 2),
-(6, 'cartagena@gmail.com', '[]', '$2y$13$mIqoje31h90RlHq1oUsGquPSi0antOjpPPVKc0M7WBIQEvQbMNhPq', 3);
+(6, 'cartagena@gmail.com', '[]', '$2y$13$mIqoje31h90RlHq1oUsGquPSi0antOjpPPVKc0M7WBIQEvQbMNhPq', 3),
+(7, 'lorca@gmail.com', '[]', '$2y$13$CQcn3nxWQqtQPicrI2pctO.9qxDEmrJN/YZbjE56suz7N0hnSbDxy', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -165,7 +166,7 @@ ALTER TABLE `messenger_messages`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
