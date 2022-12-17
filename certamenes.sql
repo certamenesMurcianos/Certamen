@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2022 a las 11:38:32
+-- Tiempo de generación: 17-12-2022 a las 14:46:50
 -- Versión del servidor: 10.4.19-MariaDB-log
 -- Versión de PHP: 7.3.28
 
@@ -37,19 +37,20 @@ CREATE TABLE `bandas_de_musica` (
   `codigo_postal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `certamenes_id` int(11) DEFAULT NULL,
-  `correo_electronico` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `correo_electronico` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `usuario_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `bandas_de_musica`
 --
 
-INSERT INTO `bandas_de_musica` (`id`, `nombre`, `numero_de_musicos`, `nombre_director`, `pueblo`, `provincia`, `codigo_postal`, `telefono`, `certamenes_id`, `correo_electronico`) VALUES
-(1, 'Música en los Garres', 103, 'Antonio Guirao Fernández', 'Los Garres', 'Murcia', '33003', '222333444', NULL, 'losgarres@gmail.com\r\n'),
-(2, 'Mediza Sillasa', 106, 'Josefa Ayala Albaladejo', 'Cieza', 'Murcia', '33022', '777888999', NULL, 'cieza@gmail.com'),
-(3, 'Músicos Cartagineses', 89, 'Antonio Guirao Fernández', 'Cartagena', 'Murcia', '11220', '555666777', NULL, 'cartagena@gmail.com'),
-(4, 'Agrupación Musical Juvenil', 109, 'Andrés Pérez Bernabé', 'Cabezo de Torres', 'Murcia', '30110', '999888666', NULL, 'cabezo@gmail.com'),
-(5, 'Amigos de la Música', 90, 'Luisa Otero López', 'Beniaján', 'Murcia', '22011', '222888444', NULL, 'beniajan@gmail.com');
+INSERT INTO `bandas_de_musica` (`id`, `nombre`, `numero_de_musicos`, `nombre_director`, `pueblo`, `provincia`, `codigo_postal`, `telefono`, `certamenes_id`, `correo_electronico`, `usuario_id`) VALUES
+(1, 'Música en los Garres', 103, 'Antonio Guirao Fernández', 'Los Garres', 'Murcia', '33003', '222333444', NULL, 'losgarres@gmail.com\r\n', 4),
+(2, 'Mediza Sillasa', 106, 'Josefa Ayala Albaladejo', 'Cieza', 'Murcia', '33022', '777888999', NULL, 'cieza@gmail.com', 5),
+(3, 'Sauces', 89, 'Antonio Guirao Fernández', 'Cartagena', 'Murcia', '11220', '555666777', NULL, 'cartagena@gmail.com', 6),
+(4, 'Agrupación Musical Juvenil', 109, 'Andrés Pérez Bernabé', 'Cabezo de Torres', 'Murcia', '30110', '999888666', NULL, 'cabezo@gmail.com', 1),
+(5, 'Amigos de la Música', 90, 'Luisa Otero López', 'Beniaján', 'Murcia', '22011', '222888444', NULL, 'beniajan@gmail.com', 3);
 
 -- --------------------------------------------------------
 
@@ -90,21 +91,20 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `banda_id` int(11) DEFAULT NULL
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `roles`, `password`, `banda_id`) VALUES
-(1, 'cabezo@gmail.com', '[]', '$2y$13$3/9rxXu6uDeE8wDq7UuyWOd.Qvy6cBKEI3xuJb/nb7i2lqiU1w2Qq', 4),
-(3, 'beniajan@gmail.com', '[]', '$2y$13$tX66FP7ey5it9zuufZp85.KTGrmuis5E0VP6InStMMtn8D9neCLiq', 5),
-(4, 'losgarres@gmail.com', '[]', '$2y$13$v2zLUKEe6Bqow7BcHAc5JuLdc1Rw2NvqFnjDdikMcrpeY/j/MzOvO', 1),
-(5, 'cieza@gmail.com', '[]', '$2y$13$cvDtpDeecjab5A85EhWC..UqbKbrYTvFov2O7I3POR45yTQ1glqnO', 2),
-(6, 'cartagena@gmail.com', '[]', '$2y$13$mIqoje31h90RlHq1oUsGquPSi0antOjpPPVKc0M7WBIQEvQbMNhPq', 3),
-(7, 'lorca@gmail.com', '[]', '$2y$13$CQcn3nxWQqtQPicrI2pctO.9qxDEmrJN/YZbjE56suz7N0hnSbDxy', NULL);
+INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
+(1, 'cabezo@gmail.com', '[]', '$2y$13$3/9rxXu6uDeE8wDq7UuyWOd.Qvy6cBKEI3xuJb/nb7i2lqiU1w2Qq'),
+(3, 'beniajan@gmail.com', '[]', '$2y$13$tX66FP7ey5it9zuufZp85.KTGrmuis5E0VP6InStMMtn8D9neCLiq'),
+(4, 'losgarres@gmail.com', '[]', '$2y$13$v2zLUKEe6Bqow7BcHAc5JuLdc1Rw2NvqFnjDdikMcrpeY/j/MzOvO'),
+(5, 'cieza@gmail.com', '[]', '$2y$13$cvDtpDeecjab5A85EhWC..UqbKbrYTvFov2O7I3POR45yTQ1glqnO'),
+(6, 'cartagena@gmail.com', '[]', '$2y$13$mIqoje31h90RlHq1oUsGquPSi0antOjpPPVKc0M7WBIQEvQbMNhPq'),
+(7, 'lorca@gmail.com', '[]', '$2y$13$CQcn3nxWQqtQPicrI2pctO.9qxDEmrJN/YZbjE56suz7N0hnSbDxy');
 
 --
 -- Índices para tablas volcadas
@@ -115,6 +115,7 @@ INSERT INTO `user` (`id`, `email`, `roles`, `password`, `banda_id`) VALUES
 --
 ALTER TABLE `bandas_de_musica`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_3F13DCEEDB38439E` (`usuario_id`),
   ADD KEY `IDX_3F13DCEEF8EE352` (`certamenes_id`);
 
 --
@@ -137,8 +138,7 @@ ALTER TABLE `messenger_messages`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`),
-  ADD UNIQUE KEY `UNIQ_8D93D6499EFB0C1D` (`banda_id`);
+  ADD UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -176,13 +176,8 @@ ALTER TABLE `user`
 -- Filtros para la tabla `bandas_de_musica`
 --
 ALTER TABLE `bandas_de_musica`
+  ADD CONSTRAINT `FK_3F13DCEEDB38439E` FOREIGN KEY (`usuario_id`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `FK_3F13DCEEF8EE352` FOREIGN KEY (`certamenes_id`) REFERENCES `certamenes` (`id`);
-
---
--- Filtros para la tabla `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `FK_8D93D6499EFB0C1D` FOREIGN KEY (`banda_id`) REFERENCES `bandas_de_musica` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
