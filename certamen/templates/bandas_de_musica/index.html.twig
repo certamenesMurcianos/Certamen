@@ -1,52 +1,134 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}BandasDeMusica index{% endblock %}
+{% block title %}
+  BandasDeMusica index
+{% endblock %}
 
 {% block body %}
-    <h1 style="text-align:center">Bandas de Música</h1>
+  <h1 style="text-align:center">
+    Bandas de Música
+  </h1>
 
-    <table class="table table-bordered border-primary" style="text-align:center">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Número de Músicos</th>
-                <th>Nombre Director</th>
-                <th>Municipio</th>
-                <th>Provincia</th>
-                <th>Código Postal</th>
-                <th>Teléfono</th>
-                {# <th>Ganador de:</th> #}
-                <th>Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for bandas_de_musica in bandas_de_musicas %}
-            <tr>
-                <td>{{ bandas_de_musica.nombre }}</td>
-                <td>{{ bandas_de_musica.numeroDeMusicos }}</td>
-                <td>{{ bandas_de_musica.nombreDirector }}</td>
-                <td>{{ bandas_de_musica.pueblo }}</td>
-                <td>{{ bandas_de_musica.provincia }}</td>
-                <td>{{ bandas_de_musica.codigoPostal }}</td>
-                <td>{{ bandas_de_musica.telefono }}</td>
-                {# <td>{{ bandas_de_musica.certamenes }}</td> #}
-                <td>
-                    <a class="btn btn-secondary" href="{{ path('app_bandas_de_musica_show', {'id': bandas_de_musica.id}) }}">Mostrar</a>
-                    <a class="btn btn-warning" href="{{ path('app_bandas_de_musica_edit', {'id': bandas_de_musica.id}) }}">Editar</a>
-                    <a class="btn btn-danger" href="{{ path('app_bandas_de_musica_delete', {'id': bandas_de_musica.id}) }}">Borrar</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">No se han encontrado resultados</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+  <table class="table table-bordered border-primary" style="text-align:center">
+    <thead>
+      <tr>
+        <th>
+          Nombre
+        </th>
+        <th>
+          Número de músicos
+        </th>
+        <th>
+          Nombre del director
+        </th>
+        <th>
+          Municipio
+        </th>
+        <th>
+          Provincia
+        </th>
+        <th>
+          Código postal
+        </th>
+        <th>
+          Teléfono
+        </th>
+        {# <th>Ganador de:</th> #}
+        {% if is_granted('ROLE_ADMIN') %}>
+        <th>
+          Opciones
+        </th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for bandas_de_musica in bandas_de_musicas %}
+        <tr>
+          <td>
+            {{ bandas_de_musica.nombre }}
+          </td>
+          <td>
+            {{ bandas_de_musica.numeroDeMusicos }}
+          </td>
+          <td>
+            {{ bandas_de_musica.nombreDirector }}
+          </td>
+          <td>
+            {{ bandas_de_musica.pueblo }}
+          </td>
+          <td>
+            {{ bandas_de_musica.provincia }}
+          </td>
+          <td>
+            {{ bandas_de_musica.codigoPostal }}
+          </td>
+          <td>
+            {{ bandas_de_musica.telefono }}
+          </td>
+          {# <td>{{ bandas_de_musica.certamenes }}</td> #}
+          <td>
+            {% if is_granted('ROLE_ADMIN') %}
+              <a class="btn btn-secondary"
+                href="{{
+                path(
+                  'app_bandas_de_musica_show',
+                  {
+                    id: bandas_de_musica.id
+                  }
+                )
+                }}">
+                Mostrar
+              </a>
+            {% endif %}
+            {% if
+              is_granted('ROLE_ADMIN')
+                or (is_granted('ROLE_USER')
+                  and bandas_de_musica.getUsuario()) %}
+              <a class="btn btn-warning"
+                href="{{
+                path(
+                  'app_bandas_de_musica_edit',
+                  {
+                    id: bandas_de_musica.id
+                  }
+                )
+                }}">
+                Editar
+              </a>
+            {% endif %}
+            {% if
+              is_granted('ROLE_ADMIN')
+                or (is_granted('ROLE_USER')
+                  and bandas_de_musica.getUsuario()) %}
+              <a class="btn btn-danger"
+                href="{{
+                path(
+                  'app_bandas_de_musica_delete',
+                  {
+                    id: bandas_de_musica.id
+                  }
+                )
+                }}">
+                Borrar
+              </a>
+            {% endif %}
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="10">
+            No se han encontrado resultados
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
-    <div class="container">
-        <div class="vertical-center">
-            <a class="btn btn-success" href="{{ path('app_bandas_de_musica_new') }}">Crear banda nueva</a>
-        </div>
+  {# <div class="container">
+    <div class="vertical-center">
+      <a class="btn btn-success" href="{{ path('app_bandas_de_musica_new') }}">
+        Crear banda nueva
+      </a>
     </div>
+  </div> #}
 {% endblock %}

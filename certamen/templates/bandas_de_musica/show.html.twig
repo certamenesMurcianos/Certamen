@@ -3,7 +3,7 @@
 {% block title %}BandasDeMusica{% endblock %}
 
 {% block body %}
-    <h1 style="text-align:center">Bandas De Música</h1>
+    <h1 style="text-align:center">Banda de música</h1>
 
     <div class="mb-3" style="width: 300px; margin: auto;">
         <div class="container">
@@ -18,11 +18,11 @@
                         <td>{{ bandas_de_musica.nombre }}</td>
                     </tr>
                     <tr>
-                        <th>Número de Músicos</th>
+                        <th>Número de músicos</th>
                         <td>{{ bandas_de_musica.numeroDeMusicos }}</td>
                     </tr>
                     <tr>
-                        <th>Nombre Director</th>
+                        <th>Nombre del director</th>
                         <td>{{ bandas_de_musica.nombreDirector }}</td>
                     </tr>
                     <tr>
@@ -34,7 +34,7 @@
                         <td>{{ bandas_de_musica.provincia }}</td>
                     </tr>
                     <tr>
-                        <th>Código Postal</th>
+                        <th>Código postal</th>
                         <td>{{ bandas_de_musica.codigoPostal }}</td>
                     </tr>
                     <tr>
@@ -42,7 +42,7 @@
                         <td>{{ bandas_de_musica.telefono }}</td>
                     </tr>
                     <tr>
-                        <th>Correo Electrónico</th>
+                        <th>Correo electrónico</th>
                         <td>{{ bandas_de_musica.correoElectronico }}</td>
                     </tr>
                     <tr>
@@ -53,7 +53,7 @@
             </table>
         </div>
         <div class="container">
-            <a class="btn btn-info" href="{{ path('app_bandas_de_musica_index') }}">Volver a Listado</a>
+            <a class="btn btn-info" href="{{ path('app_bandas_de_musica_index') }}">Volver a la lista</a>
             <a class="btn btn-warning" href="{{ path('app_bandas_de_musica_edit', {'id': bandas_de_musica.id}) }}">Editar</a>
     </div>
     {{ include('bandas_de_musica/_delete_form.html.twig') }}

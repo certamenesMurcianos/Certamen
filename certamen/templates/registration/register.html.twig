@@ -1,28 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}
+  Register
+{% endblock %}
 
-{% block stylesheet %}{% endblock %}
+{% block stylesheet %}
+{% endblock %}
 {% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
 {% block body %}
-    <h1 style="text-align:center">Registro</h1>
+  <h1 style="text-align:center">
+    Registro
+  </h1>
 
-    {{ form_start(registrationForm) }}
-    <div class="mb-3" style="width: 300px; margin: auto">
-        {{ form_row(registrationForm.email, {
-            label: 'Correo'
-        }) }}
-    </div>
-    <div class="mb-3" style="width: 300px; margin: auto;">
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Contraseña'
-        }) }}
-    </div>
-    <div class="mb-3" style="width: 300px; margin: auto">
-        {{ form_row(registrationForm.agreeTerms, {
-            label: 'Acepta Términos y Condiciones'
-        }) }}
-    </div> 
+  {{ form_start(registrationForm) }}
+  <div class="mb-3" style="width: 300px; margin: auto">
+    {{
+      form_row(
+        registrationForm.email,
+        {
+          label: 'Correo'
+        }
+      )
+    }}
+  </div>
+  <div class="mb-3" style="width: 300px; margin: auto;">
+    {{
+      form_row(
+        registrationForm.plainPassword,
+        {
+          label: 'Contraseña'
+        }
+      )
+    }}
+  </div>
+  <div class="mb-3" style="width: 300px; margin: auto">
+    {{
+      form_row(
+        registrationForm.agreeTerms,
+        {
+          label: 'Acepta Términos y Condiciones'
+        }
+      )
+    }}
+  </div>
   <div class="mb-3" style="width: 300px; margin: auto">
     <div class="container">
       <div class="vertical-center">
@@ -30,5 +50,5 @@
       </div>
     </div>
   </div>
-  {{ form_end(registrationForm) }} 
+  {{ form_end(registrationForm) }}
 {% endblock %}

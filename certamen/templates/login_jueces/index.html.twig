@@ -4,18 +4,19 @@
 {# ... #}
 
 {% block body %}
+  {% if error %}
+    <div class="container m-auto text-center">
+      {{ error.messageKey|trans(error.messageData, 'security') }}
+    </div>
+  {% endif %}
 
-    {% if error %}
-        <div class="container m-auto text-center">
-          {{ error.messageKey|trans(error.messageData, 'security') }}
-        </div>
-    {% endif %}
-    
-  <h1 style="text-align:center">Inicia Sesión Jueces</h1>
+  <h1 style="text-align:center">
+    Inicia Sesión Jueces
+  </h1>
 
-    <form action="{{ path('app_login') }}" method="post">
+  <form action="{{ path('app_login') }}" method="post">
     <div class="mb-3" style="width: 300px; margin: auto;">
-      <label for="username" class="form-label">Correo Electrónico:</label>
+      <label for="username" class="form-label">Correo electrónico:</label>
       <input type="text"
         id="username"
         name="_username"
@@ -41,7 +42,7 @@
       </div>
       <div class="col-auto">
         <button class="btn btn-lg btn-success btn-block" type="submit">
-          Iniciar sesión
+          Iniciar sesión como juez
         </button>
       </div>
     </div>
