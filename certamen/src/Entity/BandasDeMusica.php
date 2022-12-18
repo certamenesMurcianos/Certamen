@@ -65,10 +65,10 @@ class BandasDeMusica
     private $correo_electronico;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, mappedBy="banda", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="bandasDeMusica", cascade={"persist", "remove"})
      */
-    private $user;
-   
+    private $usuario;
+
 
     public function getId(): ?int
     {
@@ -184,24 +184,14 @@ class BandasDeMusica
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getUsuario(): ?User
     {
-        return $this->user;
+        return $this->usuario;
     }
 
-    public function setUser(?User $user): self
+    public function setUsuario(?User $usuario): self
     {
-        // unset the owning side of the relation if necessary
-        if ($user === null && $this->user !== null) {
-            $this->user->setBanda(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($user !== null && $user->getBanda() !== $this) {
-            $user->setBanda($this);
-        }
-
-        $this->user = $user;
+        $this->usuario = $usuario;
 
         return $this;
     }

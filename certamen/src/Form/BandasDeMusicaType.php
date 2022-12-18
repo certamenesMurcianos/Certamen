@@ -19,6 +19,7 @@ class BandasDeMusicaType extends AbstractType
             ->add('provincia')
             ->add('codigo_postal')
             ->add('telefono')
+            ->add('correo_electronico')
             ->add('certamenes')
         ;
     }

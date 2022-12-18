@@ -38,3 +38,17 @@ when@test:
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
+
+form_login:
+                # "login" is the name of the route created previously
+                login_path: login
+                check_path: login
+
+form_login/jueces:
+                # "login/jueces" is the name of the route created previously
+                login_path: login_jueces
+                check_path: login_jueces
+
+logout:
+                path: app_logout
+                target: inicio

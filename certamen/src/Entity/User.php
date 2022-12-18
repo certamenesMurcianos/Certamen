@@ -38,9 +38,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @ORM\OneToOne(targetEntity=BandasDeMusica::class, inversedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=BandasDeMusica::class, mappedBy="usuario", cascade={"persist", "remove"})
      */
-    private $banda;
+    private $bandasDeMusica;
+
 
     
     public function getId(): ?int
@@ -132,17 +133,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getBanda(): ?BandasDeMusica
+    public function getBandasDeMusica(): ?BandasDeMusica
     {
-        return $this->banda;
+        return $this->bandasDeMusica;
     }
 
-    public function setBanda(?BandasDeMusica $banda): self
+    public function setBandasDeMusica(?BandasDeMusica $bandasDeMusica): self
     {
-        $this->banda = $banda;
+        // unset the owning side of the relation if necessary
+        if ($bandasDeMusica === null && $this->bandasDeMusica !== null) {
+            $this->bandasDeMusica->setUsuario(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($bandasDeMusica !== null && $bandasDeMusica->getUsuario() !== $this) {
+            $bandasDeMusica->setUsuario($this);
+        }
+
+        $this->bandasDeMusica = $bandasDeMusica;
 
         return $this;
     }
+
 
     
 }

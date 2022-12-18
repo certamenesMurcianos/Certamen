@@ -11,11 +11,11 @@
                 <th>Nombre</th>
                 <th>Número de Músicos</th>
                 <th>Nombre Director</th>
-                <th>Pueblo</th>
+                <th>Municipio</th>
                 <th>Provincia</th>
                 <th>Código Postal</th>
                 <th>Teléfono</th>
-                <th>Ganador de:</th>
+                {# <th>Ganador de:</th> #}
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -29,7 +29,7 @@
                 <td>{{ bandas_de_musica.provincia }}</td>
                 <td>{{ bandas_de_musica.codigoPostal }}</td>
                 <td>{{ bandas_de_musica.telefono }}</td>
-                <td>{{ bandas_de_musica.certamenes }}</td>
+                {# <td>{{ bandas_de_musica.certamenes }}</td> #}
                 <td>
                     <a class="btn btn-secondary" href="{{ path('app_bandas_de_musica_show', {'id': bandas_de_musica.id}) }}">Mostrar</a>
                     <a class="btn btn-warning" href="{{ path('app_bandas_de_musica_edit', {'id': bandas_de_musica.id}) }}">Editar</a>

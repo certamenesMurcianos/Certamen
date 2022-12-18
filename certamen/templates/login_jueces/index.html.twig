@@ -1,0 +1,49 @@
+{# templates/login/jueces/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{# ... #}
+
+{% block body %}
+
+    {% if error %}
+        <div class="container m-auto text-center">
+          {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+    {% endif %}
+    
+  <h1 style="text-align:center">Inicia Sesión Jueces</h1>
+
+    <form action="{{ path('app_login') }}" method="post">
+    <div class="mb-3" style="width: 300px; margin: auto;">
+      <label for="username" class="form-label">Correo Electrónico:</label>
+      <input type="text"
+        id="username"
+        name="_username"
+        class="form-control"
+        value="{{ last_username }}" />
+    </div>
+    <div class="mb-3" style="width: 300px; margin: auto;">
+      <label for="password" class="form-label">Contraseña:</label>
+      <input type="password"
+        class="form-control"
+        id="password"
+        name="_password" />
+    </div>
+
+    {# If you want to control the URL the user is redirected to on success #}
+    {# En nuestro caso private_test #}
+    <div class="mb-3" style="width: 300px; margin: auto;">
+      <div class="col-auto">
+        <input type="hidden"
+          name="_target_path"
+          class="form-control"
+          value="{{ path('private_test') }}" />
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-lg btn-success btn-block" type="submit">
+          Iniciar sesión
+        </button>
+      </div>
+    </div>
+  </form>
+{% endblock %}

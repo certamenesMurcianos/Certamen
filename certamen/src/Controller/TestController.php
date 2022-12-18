@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Controller\LoginController;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Form\UserType;
@@ -15,25 +16,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 class TestController extends AbstractController
 {
     /**
-     * @Route("/private/test", name="private_test")
+     * @Route("/private/test", name="private_test", methods={"GET", "POST"})
      */
-    public function privada(): Response
+    public function privada()
     {
-
-        $userRepository = $this->getDoctrine()->getManager();
-
-        $relacion = "cartagena@gmail.com";
-        $user = $userRepository->getRepository(User::class)->findOneBy(['email' => $relacion]);
-        $user_id = $user->getBanda();
-
+        $session = new Session();
+        $session->start();
+        
         $bandaRepository = $this->getDoctrine()->getManager();
-        $id = $user_id;
+        $id = $session->get('id');
         $banda = $bandaRepository->getRepository(BandasDeMusica::class)->findOneBy(['id' => $id]);
+        
         $banda_id = $banda->getId();
         return $this->redirectToRoute('app_bandas_de_musica_show', [
             'id' => $banda_id,
